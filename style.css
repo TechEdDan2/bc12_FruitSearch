@@ -2,7 +2,6 @@
   /* Primary Colors */
   --bk-yellow: #ffe208;
   --bk-orange: #e85d04;
-  --search-highlight: #dc2f02;
 }
 
 /* represents an element (such as a form input) that has received focus. It is generally triggered when the user clicks or taps on an element */
@@ -16,6 +15,8 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(0.25turn, var(--bk-yellow), var(--bk-orange));
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
 }
 
 input {
@@ -29,7 +30,8 @@ input {
 
 .search-container input,
 .search-container .suggestions {
-  /* TODO */
+  background-color: #f8d07f;
+  width: 15rem;
 }
 
 .search-container input {
@@ -37,11 +39,12 @@ input {
 }
 
 .search-container .suggestions {
-  /* TODO */
+  position: absolute;
+
 }
 
 ul {
-  /* TODO */
+  list-style-type: none;
 }
 
 ul.has-suggestions {

@@ -54,12 +54,10 @@ document.addEventListener('DOMContentLoaded', function () {
 		console.log('showSuggestions is called');
 		//check to see if there are any li's in the ul
 		// if true remove them
-		//else populate the drop down
 		if (suggestions.firstChild) {
-			while (suggestions.firstChild) {
-				suggestions.removeChild(suggestions.firstChild);
-			}
+			reset();
 		} else {
+			//else populate the drop down
 			for (let i = 0; i < inputVal; i++) {
 				if (results[i] === undefined) {
 					//not sure if this should break?
@@ -67,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					const newSuggestLi = document.createElement('li');
 					newSuggestLi.innerHTML = results[i];
 					suggestions.appendChild(newSuggestLi);
+					// NOTE I need to put a span around the letters corresponding with the search and make it bolded 
 				}
 			}
 		}
@@ -77,19 +76,39 @@ document.addEventListener('DOMContentLoaded', function () {
 		console.log(`this is clicked ${e.target.innerHTML}`);
 		input.value = e.target.innerHTML;
 		//remove the suggestions
+		// while (suggestions.firstChild) {
+		// 	suggestions.removeChild(suggestions.firstChild);
+		// }
+		reset();
+
+	}
+
+	function reset() {
 		while (suggestions.firstChild) {
 			suggestions.removeChild(suggestions.firstChild);
 		}
-
 	}
 
 	// Event Handlers
 	input.addEventListener('keyup', searchHandler);
 	suggestions.addEventListener('click', useSuggestion);
+	suggestions.addEventListener('mouseover', function (e) {
+		e.preventDefault();
+		let hoverItem = e.target;
+		console.log(`This is the mouseOver: ${hoverItem}`);
+		hoverItem.style.backgroundColor = "#e85d04"
+	});
+	suggestions.addEventListener('mouseout', function (e) {
+		e.preventDefault();
+		let hoverItem = e.target;
+		console.log(`This is the mouseOut: ${hoverItem}`);
+		hoverItem.style.backgroundColor = "rgba(255, 255, 255, 0)"
+	});
 	searchBTN.addEventListener('click', function (e) {
 		e.preventDefault();
 		console.log('button click triggered');
 		input.value = "";
+		reset();
 	});
 
 
