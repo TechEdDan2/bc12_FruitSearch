@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const input = document.querySelector('#fruit');
 	//variable for the dropdown
 	const suggestions = document.querySelector('.suggestions ul');
+	const searchBTN = document.querySelector('button');
 
 	const fruits = ['Apple', 'Apricot', 'Avocado 🥑', 'Banana', 'Bilberry', 'Blackberry', 'Blackcurrant', 'Blueberry', 'Boysenberry', 'Currant', 'Cherry', 'Coconut', 'Cranberry', 'Cucumber', 'Custard apple', 'Damson', 'Date', 'Dragonfruit', 'Durian', 'Elderberry', 'Feijoa', 'Fig', 'Gooseberry', 'Grape', 'Raisin', 'Grapefruit', 'Guava', 'Honeyberry', 'Huckleberry', 'Jabuticaba', 'Jackfruit', 'Jambul', 'Juniper berry', 'Kiwifruit', 'Kumquat', 'Lemon', 'Lime', 'Loquat', 'Longan', 'Lychee', 'Mango', 'Mangosteen', 'Marionberry', 'Melon', 'Cantaloupe', 'Honeydew', 'Watermelon', 'Miracle fruit', 'Mulberry', 'Nectarine', 'Nance', 'Olive', 'Orange', 'Clementine', 'Mandarine', 'Tangerine', 'Papaya', 'Passionfruit', 'Peach', 'Pear', 'Persimmon', 'Plantain', 'Plum', 'Pineapple', 'Pomegranate', 'Pomelo', 'Quince', 'Raspberry', 'Salmonberry', 'Rambutan', 'Redcurrant', 'Salak', 'Satsuma', 'Soursop', 'Star fruit', 'Strawberry', 'Tamarillo', 'Tamarind', 'Yuzu'];
 
@@ -17,9 +18,16 @@ document.addEventListener('DOMContentLoaded', function () {
 			let lowerFruit = fruit.toLocaleLowerCase();
 			if (lowerFruit.includes(str)) {
 				console.log(`Found a match: ${lowerFruit}`);
+				if (!fruitMap.has(fruit)) {
+					fruitMap.set(fruit, fruit);
+				}
 			}
 		}
+		console.log(fruitMap);
 
+		// extract the list of fruits
+		results = fruitMap.values();
+		console.log(results);
 
 		return results;
 	}
@@ -33,23 +41,56 @@ document.addEventListener('DOMContentLoaded', function () {
 		console.log(userSearchInput);
 
 		//call the search function and pass the letters
-		const searchResults = search(userSearchInput);
+		const searchResults = Array.from(search(userSearchInput));
+		console.log(`The Array!`);
+		console.log(searchResults);
 
 		//pass the returned results to show suggestions
-
+		showSuggestions(searchResults, 10);
 	}
 
 	function showSuggestions(results, inputVal) {
-
-		// TODO
+		//Check to see if this function is triggered
+		console.log('showSuggestions is called');
+		//check to see if there are any li's in the ul
+		// if true remove them
+		//else populate the drop down
+		if (suggestions.firstChild) {
+			while (suggestions.firstChild) {
+				suggestions.removeChild(suggestions.firstChild);
+			}
+		} else {
+			for (let i = 0; i < inputVal; i++) {
+				if (results[i] === undefined) {
+					//not sure if this should break?
+				} else {
+					const newSuggestLi = document.createElement('li');
+					newSuggestLi.innerHTML = results[i];
+					suggestions.appendChild(newSuggestLi);
+				}
+			}
+		}
 	}
 
 	function useSuggestion(e) {
-		// TODO
+		e.preventDefault();
+		console.log(`this is clicked ${e.target.innerHTML}`);
+		input.value = e.target.innerHTML;
+		//remove the suggestions
+		while (suggestions.firstChild) {
+			suggestions.removeChild(suggestions.firstChild);
+		}
+
 	}
 
-
+	// Event Handlers
 	input.addEventListener('keyup', searchHandler);
 	suggestions.addEventListener('click', useSuggestion);
+	searchBTN.addEventListener('click', function (e) {
+		e.preventDefault();
+		console.log('button click triggered');
+		input.value = "";
+	});
+
 
 });
