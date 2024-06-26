@@ -1,16 +1,21 @@
 :root {
   /* Primary Colors */
-  --bk-yellow: #ffba08;
+  --bk-yellow: #ffe208;
   --bk-orange: #e85d04;
   --search-highlight: #dc2f02;
 }
 
+/* represents an element (such as a form input) that has received focus. It is generally triggered when the user clicks or taps on an element */
 :focus {
   /* TODO */
 }
 
 body {
-  /* TODO */
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(0.25turn, var(--bk-yellow), var(--bk-orange));
 }
 
 input {
@@ -19,6 +24,7 @@ input {
 
 .search-container {
   /* TODO */
+
 }
 
 .search-container input,
