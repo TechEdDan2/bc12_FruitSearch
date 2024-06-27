@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		console.log('keyup triggered');
 
 		//get the letter(s) in the text input
+
 		const userSearchInput = input.value.toLowerCase();
 		console.log(userSearchInput);
 
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		//pass the returned results to show suggestions
 		showSuggestions(searchResults, 10);
+
 	}
 
 	function showSuggestions(results, inputVal) {
@@ -56,17 +58,15 @@ document.addEventListener('DOMContentLoaded', function () {
 		// if true remove them
 		if (suggestions.firstChild) {
 			reset();
-		} else {
-			//else populate the drop down
-			for (let i = 0; i < inputVal; i++) {
-				if (results[i] === undefined) {
-					//not sure if this should break?
-				} else {
-					const newSuggestLi = document.createElement('li');
-					newSuggestLi.innerHTML = results[i];
-					suggestions.appendChild(newSuggestLi);
-					// NOTE I need to put a span around the letters corresponding with the search and make it bolded 
-				}
+		}
+		for (let i = 0; i < inputVal; i++) {
+			if (results[i] === undefined) {
+				//not sure if this should break?
+			} else {
+				const newSuggestLi = document.createElement('li');
+				newSuggestLi.innerHTML = results[i];
+				suggestions.appendChild(newSuggestLi);
+				// NOTE I need to put a span around the letters corresponding with the search and make it bolded 
 			}
 		}
 	}
@@ -76,11 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		console.log(`this is clicked ${e.target.innerHTML}`);
 		input.value = e.target.innerHTML;
 		//remove the suggestions
-		// while (suggestions.firstChild) {
-		// 	suggestions.removeChild(suggestions.firstChild);
-		// }
 		reset();
-
 	}
 
 	function reset() {
@@ -92,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Event Handlers
 	input.addEventListener('keyup', searchHandler);
 	suggestions.addEventListener('click', useSuggestion);
+
 	suggestions.addEventListener('mouseover', function (e) {
 		e.preventDefault();
 		let hoverItem = e.target;

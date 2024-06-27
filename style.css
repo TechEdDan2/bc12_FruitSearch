@@ -21,11 +21,13 @@ body {
 
 input {
   /* TODO */
+  padding: 0.5rem;
 }
 
 .search-container {
-  /* TODO */
-
+  border: 1px solid blue;
+  margin: 0.25rem;
+  box-shadow: 0 2px 2px var(--bk-orange);
 }
 
 .search-container input,
@@ -52,13 +54,21 @@ ul.has-suggestions {
 }
 
 ul li {
-  /* TODO */
+  padding: 0 0.5rem;
 }
 
 ul li:hover {
   /* TODO */
 }
 
-input {
-  /* TODO */
+#search {
+  width: 5rem;
+  height: 2.75rem;
+  padding: 0.25rem;
+  border-radius: 10px;
+}
+
+#search:hover {
+  background-color: var(--bk-yellow);
+  color: var(--bk-orange);
 }
