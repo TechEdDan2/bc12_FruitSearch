@@ -44,12 +44,12 @@ Users should be able to:
 
 ### What I learned
 
-The UI layout was basic, so I didn't explore any new layout choices. The real challenge was using the DOM and the skills gained in the course from the ES2015 section. I incorporated some arrow function syntax (but it could be cleaner), map, spread operator, and various array functions.   
+The UI layout was basic, so I didn't explore any new layout choices. The real challenge was using the DOM and the skills gained in the course from the ES2015 section. I incorporated some arrow function syntax (but it could be cleaner), map, spread operator, and various array functions. I was proud of the makeBoldLetters solution, but wonder about other ways to solve this identified problem.   
 
 Code snippets:
 
 ```css
-    /* No major CSS used in the project */
+    /* No overly complex CSS used in the project */
 ```
 ```js
 /**
@@ -75,7 +75,7 @@ Code snippets:
 
 ### Continued development
 
-So as with most of my challenges, I am always unsure of best practices. This is part of the reason I am completing the Bootcamp. I would like to incorporate Jasmine testing into the project, and possibly refactor the code after some feedback to improve it. I wasn't completely happy with my makeBoldLetters solution, so I am curious about alternative solutions. 
+So as with most of my challenges, I am always unsure of best practices. This is part of the reason I am completing the Bootcamp. In the future, I would like to incorporate Jasmine testing into the project, and possibly refactor the code after some feedback to improve it. I think the makeBoldLetters solution was good, but I am curious about alternative solutions. 
 
 ### Useful resources
 
