@@ -21,16 +21,17 @@ This is a solution to the Fruit Search Challenge.
 Users should be able to:
 
 - use the search bar to search a list of fruit by entering some letters
+- click on an item in the list and have it populate the search text input
 
 ### Screenshot
 
-![](./images/TBD.png)
+![](./images/Screenshot_2024-07-01.png)
 
 
 ### Links
 
-- Solution URL: 
-- Live Site URL: 
+- Solution URL: https://github.com/TechEdDan2/bc12_FruitSearch
+- Live Site URL: https://techeddan2.github.io/bc12_FruitSearch/
 
 ## My process
 
@@ -39,16 +40,16 @@ Users should be able to:
 - CSS custom properties
 - Flexbox
 - DOM 
-- Javascript
+- Javacript
 
 ### What I learned
 
-The UI layout was basic. The real challenge was using the DOM and the skills gained in the course from the ES2015 section.  
+The UI layout was basic. The real challenge was using the DOM and the skills gained in the course from the ES2015 section. I incorporated some arrow function syntax (but it could be cleaner), map, spread operator, and various array functions.   
 
 Code snippets:
 
 ```css
-    /* Nothing major here */
+    /* No major CSS used in the project */
 ```
 ```js
 /**
@@ -74,13 +75,13 @@ Code snippets:
 
 ### Continued development
 
-So as with most of my challenges, I am always unsure of best practices. This is part of the reason I am completing the Bootcamp. I would like to incorporate Jasmine testing into the project, and possibly refactor the code
+So as with most of my challenges, I am always unsure of best practices. This is part of the reason I am completing the Bootcamp. I would like to incorporate Jasmine testing into the project, and possibly refactor the code after some feedback to improve it. I wasn't completely happy with my makeBoldLetters solution, so I am curious about alternative solutions. 
 
 ### Useful resources
 
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) - This helped me when using the Document Object Model to create this project. 
 - [Udemy](https://www.udemy.com/course/the-web-developer-bootcamp) - This Udemy course has helped to learn how to use the DOM. I'd recommend it to anyone still learning this concept.
-- [Springboard] (https://www.springboard.com/) - This is the Bootcamp where I am currently gaining a deeper understanding for JavaScript.  
+- [Springboard](https://www.springboard.com/) - This is the Bootcamp where I am currently gaining a deeper understanding for JavaScript.  
 
 ## Author
 
