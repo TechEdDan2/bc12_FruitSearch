@@ -4,11 +4,6 @@
   --bk-orange: #e85d04;
 }
 
-/* represents an element (such as a form input) that has received focus. It is generally triggered when the user clicks or taps on an element */
-:focus {
-  /* TODO */
-}
-
 body {
   display: flex;
   min-height: 100vh;
@@ -20,7 +15,6 @@ body {
 }
 
 input {
-  /* TODO */
   padding: 0.5rem;
 }
 
@@ -36,10 +30,6 @@ input {
   width: 15rem;
 }
 
-.search-container input {
-  /* TODO */
-}
-
 .search-container .suggestions {
   position: absolute;
 
@@ -49,16 +39,12 @@ ul {
   list-style-type: none;
 }
 
-ul.has-suggestions {
-  /* TODO */
-}
-
 ul li {
   padding: 0 0.5rem;
 }
 
 ul li:hover {
-  /* TODO */
+  background-color: #e85d04;
 }
 
 #search {

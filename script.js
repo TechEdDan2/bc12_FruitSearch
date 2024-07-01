@@ -1,3 +1,7 @@
+/**
+ * A script to manage the search bar functionality
+ * @author DNel2
+ */
 document.addEventListener('DOMContentLoaded', function () {
 
 	//Variable for the fruit search input 
@@ -8,8 +12,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	const fruits = ['Apple', 'Apricot', 'Avocado 🥑', 'Banana', 'Bilberry', 'Blackberry', 'Blackcurrant', 'Blueberry', 'Boysenberry', 'Currant', 'Cherry', 'Coconut', 'Cranberry', 'Cucumber', 'Custard apple', 'Damson', 'Date', 'Dragonfruit', 'Durian', 'Elderberry', 'Feijoa', 'Fig', 'Gooseberry', 'Grape', 'Raisin', 'Grapefruit', 'Guava', 'Honeyberry', 'Huckleberry', 'Jabuticaba', 'Jackfruit', 'Jambul', 'Juniper berry', 'Kiwifruit', 'Kumquat', 'Lemon', 'Lime', 'Loquat', 'Longan', 'Lychee', 'Mango', 'Mangosteen', 'Marionberry', 'Melon', 'Cantaloupe', 'Honeydew', 'Watermelon', 'Miracle fruit', 'Mulberry', 'Nectarine', 'Nance', 'Olive', 'Orange', 'Clementine', 'Mandarine', 'Tangerine', 'Papaya', 'Passionfruit', 'Peach', 'Pear', 'Persimmon', 'Plantain', 'Plum', 'Pineapple', 'Pomegranate', 'Pomelo', 'Quince', 'Raspberry', 'Salmonberry', 'Rambutan', 'Redcurrant', 'Salak', 'Satsuma', 'Soursop', 'Star fruit', 'Strawberry', 'Tamarillo', 'Tamarind', 'Yuzu'];
 
+	/**  
+	 * The search function to find matches in the fruits array
+	 * @param {string} str - The character that will be used for searching  
+	*/
 	function search(str) {
-		console.log(`thanks for passing me: ${str}`);
 		let results = [];
 		const fruitMap = new Map();
 
@@ -17,13 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		for (let fruit of fruits) {
 			let lowerFruit = fruit.toLocaleLowerCase();
 			if (lowerFruit.includes(str)) {
-				console.log(`Found a match: ${lowerFruit}`);
-				console.log(`${str} is found at ${lowerFruit.indexOf(str)}`);
-				console.log(`${str} is ${str.length} long`);
 				let strLength = str.length;
-
-				console.log(`help me ${strLength}`);
-
 				let bFruit = makeBoldLetters(lowerFruit, lowerFruit.indexOf(str), strLength);
 
 				// Add the item to the map
@@ -32,56 +33,57 @@ document.addEventListener('DOMContentLoaded', function () {
 				}
 			}
 		}
-		console.log(fruitMap);
-
 		// extract the list of fruits
 		results = fruitMap.values();
-		console.log(results);
 		return results;
 	}
 
+	/**
+	 * MakeBolderLetters highlights the search text in the returned items
+	 * @param {String} word - returned word from the search 
+	 * @param {number} startIndex - location of the matching text
+	 * @param {number} strLength - length of the text typed in seach
+	 * @returns {Sting} 
+	 */
 	const makeBoldLetters = (word, startIndex, strLength) => {
 		let boldLtrWrd = "";
 		let wordArray = [...word];
 		let endIndex = (startIndex + strLength) + 1;
-		console.log(`This is start Index: ${startIndex}`)
-		console.log(`This is end Index: ${endIndex}`)
-		console.log(`this is the wordArray: ${wordArray}`);
 
 		wordArray.splice(startIndex, 0, "<span>");
 		wordArray.splice(endIndex, 0, "</span>");
 
-		console.log(wordArray);
-
 		boldLtrWrd = wordArray.join("");
-
-		console.log(`This is the super HTML ${boldLtrWrd}`);
 
 		return boldLtrWrd;
 	}
 
+	/**
+	 * searchHandler takes the input and passes it to search then takes 
+	 *   the results and passes the dataset when it calls 
+	 *   showSuggestions and gives it a limit of 10 items. 
+	 * @param {Event} e 
+	 */
 	function searchHandler(e) {
 		e.preventDefault();
-		console.log('keyup triggered');
-
 		//get the letter(s) in the text input
-
 		const userSearchInput = input.value.toLowerCase();
-		console.log(userSearchInput);
 
 		//call the search function and pass the letters
 		const searchResults = Array.from(search(userSearchInput));
-		console.log(`The Array!`);
-		console.log(searchResults);
 
 		//pass the returned results to show suggestions
 		showSuggestions(searchResults, 10);
 
 	}
 
+	/**
+	 * showSuggestions creates new list items and populates each
+	 *   with an item from the search results.
+	 * @param {array} results - the list of results
+	 * @param {number} inputVal - limiter to keep the display list short 
+	 */
 	function showSuggestions(results, inputVal) {
-		//Check to see if this function is triggered
-		console.log('showSuggestions is called');
 		//check to see if there are any li's in the ul
 		// if true remove them
 		if (suggestions.firstChild) {
@@ -94,44 +96,39 @@ document.addEventListener('DOMContentLoaded', function () {
 				const newSuggestLi = document.createElement('li');
 				newSuggestLi.innerHTML = results[i];
 				suggestions.appendChild(newSuggestLi);
-				// NOTE I need to put a span around the letters corresponding with the search and make it bolded 
 			}
 		}
 	}
 
+	/**
+	 * When an item in the suggestions list is clickec
+	 *   useSuggestion populates the search bar with the
+	 *   full text
+	 * @param {Event} e 
+	 */
 	function useSuggestion(e) {
 		e.preventDefault();
-		console.log(`this is clicked ${e.target.innerHTML}`);
 		input.value = e.target.innerText;
-		//remove the suggestions
 		reset();
 	}
 
+	/**
+	 * A simple reset to clear the list of items. 
+	 */
 	function reset() {
 		while (suggestions.firstChild) {
 			suggestions.removeChild(suggestions.firstChild);
 		}
 	}
 
-	// Event Handlers
+	// ------------------ //
+	//	 Event Handlers
+	// ----------------- //
 	input.addEventListener('keyup', searchHandler);
 	suggestions.addEventListener('click', useSuggestion);
 
-	suggestions.addEventListener('mouseover', function (e) {
+	searchBTN.addEventListener('click', (e) => {
 		e.preventDefault();
-		let hoverItem = e.target;
-		console.log(`This is the mouseOver: ${hoverItem}`);
-		hoverItem.style.backgroundColor = "#e85d04"
-	});
-	suggestions.addEventListener('mouseout', function (e) {
-		e.preventDefault();
-		let hoverItem = e.target;
-		console.log(`This is the mouseOut: ${hoverItem}`);
-		hoverItem.style.backgroundColor = "rgba(255, 255, 255, 0)"
-	});
-	searchBTN.addEventListener('click', function (e) {
-		e.preventDefault();
-		console.log('button click triggered');
 		input.value = "";
 		reset();
 	});
