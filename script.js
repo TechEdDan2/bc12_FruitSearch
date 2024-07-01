@@ -13,13 +13,22 @@ document.addEventListener('DOMContentLoaded', function () {
 		let results = [];
 		const fruitMap = new Map();
 
-		//Loop over the friut array looking for the search letters
+		//Loop over the fruit array looking for the search letters
 		for (let fruit of fruits) {
 			let lowerFruit = fruit.toLocaleLowerCase();
 			if (lowerFruit.includes(str)) {
 				console.log(`Found a match: ${lowerFruit}`);
+				console.log(`${str} is found at ${lowerFruit.indexOf(str)}`);
+				console.log(`${str} is ${str.length} long`);
+				let strLength = str.length;
+
+				console.log(`help me ${strLength}`);
+
+				let bFruit = makeBoldLetters(lowerFruit, lowerFruit.indexOf(str), strLength);
+
+				// Add the item to the map
 				if (!fruitMap.has(fruit)) {
-					fruitMap.set(fruit, fruit);
+					fruitMap.set(fruit, bFruit);
 				}
 			}
 		}
@@ -28,8 +37,27 @@ document.addEventListener('DOMContentLoaded', function () {
 		// extract the list of fruits
 		results = fruitMap.values();
 		console.log(results);
-
 		return results;
+	}
+
+	const makeBoldLetters = (word, startIndex, strLength) => {
+		let boldLtrWrd = "";
+		let wordArray = [...word];
+		let endIndex = (startIndex + strLength) + 1;
+		console.log(`This is start Index: ${startIndex}`)
+		console.log(`This is end Index: ${endIndex}`)
+		console.log(`this is the wordArray: ${wordArray}`);
+
+		wordArray.splice(startIndex, 0, "<span>");
+		wordArray.splice(endIndex, 0, "</span>");
+
+		console.log(wordArray);
+
+		boldLtrWrd = wordArray.join("");
+
+		console.log(`This is the super HTML ${boldLtrWrd}`);
+
+		return boldLtrWrd;
 	}
 
 	function searchHandler(e) {
@@ -74,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	function useSuggestion(e) {
 		e.preventDefault();
 		console.log(`this is clicked ${e.target.innerHTML}`);
-		input.value = e.target.innerHTML;
+		input.value = e.target.innerText;
 		//remove the suggestions
 		reset();
 	}

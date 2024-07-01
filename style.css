@@ -72,3 +72,7 @@ ul li:hover {
   background-color: var(--bk-yellow);
   color: var(--bk-orange);
 }
+
+span {
+  font-weight: bold;
+}
