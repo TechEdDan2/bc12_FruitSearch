@@ -44,7 +44,7 @@ Users should be able to:
 
 ### What I learned
 
-The UI layout was basic. The real challenge was using the DOM and the skills gained in the course from the ES2015 section. I incorporated some arrow function syntax (but it could be cleaner), map, spread operator, and various array functions.   
+The UI layout was basic, so I didn't explore any new layout choices. The real challenge was using the DOM and the skills gained in the course from the ES2015 section. I incorporated some arrow function syntax (but it could be cleaner), map, spread operator, and various array functions.   
 
 Code snippets:
 
@@ -80,8 +80,8 @@ So as with most of my challenges, I am always unsure of best practices. This is 
 ### Useful resources
 
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) - This helped me when using the Document Object Model to create this project. 
-- [Udemy](https://www.udemy.com/course/the-web-developer-bootcamp) - This Udemy course has helped to learn how to use the DOM. I'd recommend it to anyone still learning this concept.
-- [Springboard](https://www.springboard.com/) - This is the Bootcamp where I am currently gaining a deeper understanding for JavaScript.  
+- [Udemy](https://www.udemy.com/course/the-web-developer-bootcamp) - This Udemy course has helped me to brush up on how to use the DOM. I'd recommend it to anyone still learning this concept.
+- [Springboard](https://www.springboard.com/) - This is the Bootcamp where I am currently gaining a deeper understanding of JavaScript and many other full stack languages, workflows, and concepts.  
 
 ## Author
 
