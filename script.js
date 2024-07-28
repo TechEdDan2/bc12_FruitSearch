@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	 * @param {String} word - returned word from the search 
 	 * @param {number} startIndex - location of the matching text
 	 * @param {number} strLength - length of the text typed in seach
-	 * @returns {Sting} 
+	 * @returns {String} 
 	 */
 	const makeBoldLetters = (word, startIndex, strLength) => {
 		let boldLtrWrd = "";
